@@ -58,14 +58,14 @@ app.get('/vendors', async (req, res) => {
   //   queryParams.push(date);
   // }
 
-  // try {
-    const vendors_data = await pool.query(query, queryParams);
-//     res.json(rows);
-//   } catch (error) {
-//     console.error('Error retrieving event data:', error);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
+  try {
+    const vendors_data = await pool.query(query);
+    res.status(200).send(vendors_data)
+  } catch (error) {
+    console.error('Error retrieving event data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 // Start the server
 app.listen(port, () => {
