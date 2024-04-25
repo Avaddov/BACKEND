@@ -44,7 +44,7 @@ app.post('/VendorList', async (req, res) => {
 // GET endpoint to retrieve event data with filters
 app.get('/vendors', async (req, res) => {
   const { page = 1 } = req.query;
-  const offset = (page - 1) * limit;
+  const offset = (page - 1) * 20;
 
   let query = `SELECT * FROM vendors LIMIT 20 OFFSET ${offset};`;
 
