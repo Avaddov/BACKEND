@@ -1,11 +1,11 @@
 const express = require("express");
 // const db = require("mysql2");
 const { Pool } = require('pg');
-// const cors = require("cors");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 //CONNECTION POOL 
 
@@ -13,13 +13,18 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'Evendor',
-    password: 'Panda42069$',
+    password: 'Panda666',
     port: 5432,
 
 });
 
 app.use(bodyParser.json());
 
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  })
+);
 // POST ENDPOINT TO ACCEPT AND STORE EVENT DATA 
 app.post('/VendorList', async (req, res) => {
     const eventData = req.body;
@@ -38,26 +43,13 @@ app.post('/VendorList', async (req, res) => {
 
 // GET endpoint to retrieve event data with filters
 app.get('/vendors', async (req, res) => {
-  // const { type, date } = req.query;
+  const { page = 1 } = req.query;
+  const offset = (page - 1) * limit;
 
-  let query = 'SELECT * FROM vendors';
-  // const queryParams = [];
+  let query = `SELECT * FROM vendors LIMIT 20 OFFSET ${offset};`;
 
-  // if (type) {
-  //   query += ' WHERE type = $1';
-  //   queryParams.push(type);
-  // }
-
-  // if (date) {
-  //   if (queryParams.length === 0) {
-  //     query += ' WHERE';
-  //   } else {
-  //     query += ' AND';
-  //   }
-  //   query += ' date = $' + (queryParams.length + 1);
-  //   queryParams.push(date);
-  // }
-
+  console.log('balls');
+  debugger
   try {
     const vendors_data = await pool.query(query);
     res.status(200).send(vendors_data)
