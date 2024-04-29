@@ -60,8 +60,8 @@ INSERT INTO users (first_name, last_name) VALUES
     ('Sarah', 'Weiss');
 
 
-INSERT INTO vendors (vendor_name, vendor_type,vendor_price, vendor_rating) VALUES 
-    ('DOfer Photography', 'Photographer', 50, 5),
+INSERT INTO vendors (vendor_name, vendor_type,vendor_price, vendor_rating, image_url) VALUES 
+    ('DOfer Photography', 'Photographer', 50, 5, 'https://scontent.ftlv16-1.fna.fbcdn.net/v/t39.30808-6/293310780_443935171075568_5978492322524888453_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=c9Glur_ed38Q7kNvgFPgEXX&_nc_ht=scontent.ftlv16-1.fna&oh=00_AfCf5JKmfSsujaIVu8nCD61Uvml-pH_wnbsvGMPb8D8TWQ&oe=6630B542'),
     ('Moonlight Bunny Photography', 'Photographer', 40, 5),
     ('Todd Snap', 'Photographer', 60, 4),
     ('Checkpoint Pics', 'Photographer', 70, 4),
